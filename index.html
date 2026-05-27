@@ -3,86 +3,478 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SHAG 2026 — 4-Week Campaign Preview (v2)</title>
+<title>SHAG 2026 — 4-Week Campaign Preview</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=DM+Serif+Display&display=swap');
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:'DM Sans',-apple-system,sans-serif;background:#0d0f0e;color:#e8e4df;line-height:1.6}
-  .hero{background:linear-gradient(135deg,#1a3a3a 0%,#0d1f1f 50%,#1a0f0a 100%);padding:80px 40px 60px;text-align:center;border-bottom:2px solid #2a4a4a}
-  .hero h1{font-family:'DM Serif Display',serif;font-size:3.5rem;color:#e8c87a;margin-bottom:8px;letter-spacing:2px}
-  .hero .subtitle{font-size:1.1rem;color:#8ab4a8;letter-spacing:3px;text-transform:uppercase;margin-bottom:24px}
-  .hero .dates{font-family:'DM Serif Display',serif;font-size:1.4rem;color:#e8e4df}
-  .hero .meta{margin-top:24px;font-size:.85rem;color:#6a8a7a}
-  .container{max-width:900px;margin:0 auto;padding:0 24px}
-  .week-header{padding:48px 0 24px;border-bottom:1px solid #2a3a3a;margin-bottom:32px}
-  .week-header h2{font-family:'DM Serif Display',serif;font-size:2rem;color:#e8c87a;margin-bottom:4px}
-  .week-header .week-theme{font-size:1rem;color:#8ab4a8;font-style:italic}
-  .week-header .week-dates{font-size:.85rem;color:#5a7a6a;margin-top:4px}
-  .post-card{background:#151a18;border:1px solid #2a3a3a;border-radius:12px;margin-bottom:40px;overflow:hidden}
-  .post-header{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;background:#1a2220;border-bottom:1px solid #2a3a3a}
-  .post-number{font-family:'DM Serif Display',serif;font-size:1.8rem;color:#e8c87a;min-width:50px}
-  .post-info{flex:1;margin-left:16px}
-  .post-info .post-date{font-weight:700;font-size:1rem;color:#e8e4df}
-  .post-info .post-concept{font-size:.9rem;color:#8ab4a8;margin-top:2px}
-  .post-type-badge{background:#2a4a4a;color:#8ab4a8;padding:4px 12px;border-radius:20px;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
-  .post-type-badge.reel{background:#3a2a4a;color:#b8a0d0}
-  .post-type-badge.carousel{background:#2a3a4a;color:#a0c0d0}
-  .post-type-badge.photo{background:#3a4a2a;color:#b0d0a0}
-  .post-type-badge.graphic{background:#4a3a2a;color:#d0b0a0}
-  .post-images{padding:24px;display:flex;gap:12px;overflow-x:auto;background:#111614}
-  .post-images.single{justify-content:center}
-  .post-images img{max-height:400px;width:auto;border-radius:8px;object-fit:cover;flex-shrink:0}
-  .post-images.single img{max-height:500px;max-width:100%}
-  .post-video{width:100%;max-height:500px;border-radius:8px;background:#000}
-  .video-label{text-align:center;margin-top:8px;font-size:.75rem;color:#4a6a5a;font-family:monospace}
-  .graphic-placeholder{max-height:400px;min-height:280px;width:300px;background:linear-gradient(135deg,#2a3a3a,#1a2a2a);border-radius:8px;border:2px dashed #3a5a5a;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:20px;text-align:center;flex-shrink:0}
-  .graphic-placeholder .label{font-weight:700;color:#e8c87a;font-size:.85rem}
-  .graphic-placeholder .desc{font-size:.75rem;color:#5a7a6a}
-  .post-caption{padding:24px;border-top:1px solid #1a2a2a}
-  .post-caption h4{font-size:.75rem;text-transform:uppercase;letter-spacing:2px;color:#5a7a6a;margin-bottom:12px}
-  .post-caption .caption-text{font-size:.95rem;color:#c8c4bf;white-space:pre-line;line-height:1.7;max-width:600px}
-  .post-caption .hashtags{color:#6a8a7a}
-  .cta-badge{display:inline-block;background:#2a2a1a;color:#d0c080;padding:4px 12px;border-radius:4px;font-size:.8rem;font-weight:600;margin-top:8px}
-  .post-details{padding:20px 24px;border-top:1px solid #1a2a2a}
-  .post-details .detail-block h5{font-size:.7rem;text-transform:uppercase;letter-spacing:2px;color:#5a7a6a;margin-bottom:6px}
-  .post-details .detail-block p{font-size:.85rem;color:#a0a09a;line-height:1.5}
-  .post-notes{padding:16px 24px 20px;border-top:1px solid #1a2a2a;background:#12171515}
-  .post-notes h5{font-size:.7rem;text-transform:uppercase;letter-spacing:2px;color:#5a7a6a;margin-bottom:6px}
-  .post-notes p{font-size:.8rem;color:#7a8a7a;line-height:1.5}
-  .section{padding:48px 0 24px;border-top:2px solid #2a3a3a;margin-top:48px}
-  .section h2{font-family:'DM Serif Display',serif;font-size:1.8rem;color:#e8c87a;margin-bottom:20px}
-  .section h3{font-size:1rem;color:#8ab4a8;margin:24px 0 12px}
-  .section p,.section li{font-size:.9rem;color:#a0a09a;line-height:1.6}
-  .section ul{padding-left:20px}
-  .section li{margin-bottom:6px}
-  .graphics-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
-  .graphic-card{background:#1a2220;border:1px solid #2a3a3a;border-radius:8px;padding:20px}
-  .graphic-card h4{font-size:.9rem;color:#e8c87a;margin-bottom:6px}
-  .graphic-card .format{font-size:.75rem;color:#5a7a6a;margin-bottom:8px}
-  .graphic-card p{font-size:.8rem;color:#8a9a8a}
-  .footer{padding:48px 24px;text-align:center;border-top:1px solid #2a3a3a;margin-top:60px}
-  .footer p{font-size:.8rem;color:#4a5a4a}
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    background: #0d0f0e;
+    color: #e8e4df;
+    line-height: 1.6;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #1a3a3a 0%, #0d1f1f 50%, #1a0f0a 100%);
+    padding: 80px 40px 60px;
+    text-align: center;
+    border-bottom: 2px solid #2a4a4a;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3.5rem;
+    color: #e8c87a;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+  }
+
+  .hero .subtitle {
+    font-size: 1.1rem;
+    color: #8ab4a8;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .hero .dates {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: #e8e4df;
+  }
+
+  .hero .meta {
+    margin-top: 24px;
+    font-size: 0.85rem;
+    color: #6a8a7a;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Week Headers */
+  .week-header {
+    padding: 48px 0 24px;
+    border-bottom: 1px solid #2a3a3a;
+    margin-bottom: 32px;
+  }
+
+  .week-header h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: #e8c87a;
+    margin-bottom: 4px;
+  }
+
+  .week-header .week-theme {
+    font-size: 1rem;
+    color: #8ab4a8;
+    font-style: italic;
+  }
+
+  .week-header .week-dates {
+    font-size: 0.85rem;
+    color: #5a7a6a;
+    margin-top: 4px;
+  }
+
+  /* Post Cards */
+  .post-card {
+    background: #151a18;
+    border: 1px solid #2a3a3a;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    overflow: hidden;
+  }
+
+  .post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    background: #1a2220;
+    border-bottom: 1px solid #2a3a3a;
+  }
+
+  .post-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    color: #e8c87a;
+    min-width: 50px;
+  }
+
+  .post-info {
+    flex: 1;
+    margin-left: 16px;
+  }
+
+  .post-info .post-date {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #e8e4df;
+  }
+
+  .post-info .post-concept {
+    font-size: 0.9rem;
+    color: #8ab4a8;
+    margin-top: 2px;
+  }
+
+  .post-type-badge {
+    background: #2a4a4a;
+    color: #8ab4a8;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  .post-type-badge.reel { background: #3a2a4a; color: #b8a0d0; }
+  .post-type-badge.carousel { background: #2a3a4a; color: #a0c0d0; }
+  .post-type-badge.photo { background: #3a4a2a; color: #b0d0a0; }
+
+  /* Image Grid */
+  .post-images {
+    padding: 24px;
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    background: #111614;
+  }
+
+  .post-images.single {
+    justify-content: center;
+  }
+
+  .post-images img {
+    max-height: 400px;
+    width: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .post-images.single img {
+    max-height: 500px;
+    max-width: 100%;
+  }
+
+  .post-images .slide-label {
+    position: relative;
+  }
+
+  .post-images .slide-label::after {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    background: rgba(0,0,0,0.7);
+    color: #e8e4df;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+
+  .post-video {
+    width: 100%;
+    max-height: 500px;
+    border-radius: 8px;
+    background: #000;
+  }
+
+  .video-label {
+    text-align: center;
+    margin-top: 8px;
+    font-size: 0.75rem;
+    color: #4a6a5a;
+    font-family: monospace;
+  }
+
+  .graphic-placeholder {
+    max-height: 400px;
+    min-height: 280px;
+    width: 300px;
+    background: linear-gradient(135deg, #2a3a3a, #1a2a2a);
+    border-radius: 8px;
+    border: 2px dashed #3a5a5a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 20px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .graphic-placeholder .label {
+    font-weight: 700;
+    color: #e8c87a;
+    font-size: 0.85rem;
+  }
+
+  .graphic-placeholder .desc {
+    font-size: 0.75rem;
+    color: #5a7a6a;
+  }
+
+  /* Caption */
+  .post-caption {
+    padding: 24px;
+    border-top: 1px solid #1a2a2a;
+  }
+
+  .post-caption h4 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #5a7a6a;
+    margin-bottom: 12px;
+  }
+
+  .post-caption .caption-text {
+    font-size: 0.95rem;
+    color: #c8c4bf;
+    white-space: pre-line;
+    line-height: 1.7;
+    max-width: 600px;
+  }
+
+  .post-caption .hashtags {
+    color: #6a8a7a;
+    margin-top: 8px;
+  }
+
+  /* Post Details */
+  .post-details {
+    padding: 20px 24px;
+    border-top: 1px solid #1a2a2a;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .detail-block h5 {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #5a7a6a;
+    margin-bottom: 6px;
+  }
+
+  .detail-block p {
+    font-size: 0.85rem;
+    color: #a0a09a;
+    line-height: 1.5;
+  }
+
+  .post-notes {
+    padding: 16px 24px 20px;
+    border-top: 1px solid #1a2a2a;
+    background: #12171515;
+  }
+
+  .post-notes h5 {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #5a7a6a;
+    margin-bottom: 6px;
+  }
+
+  .post-notes p {
+    font-size: 0.8rem;
+    color: #7a8a7a;
+    line-height: 1.5;
+  }
+
+  /* Sections */
+  .section {
+    padding: 48px 0 24px;
+    border-top: 2px solid #2a3a3a;
+    margin-top: 48px;
+  }
+
+  .section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    color: #e8c87a;
+    margin-bottom: 20px;
+  }
+
+  .section h3 {
+    font-size: 1rem;
+    color: #8ab4a8;
+    margin: 24px 0 12px;
+  }
+
+  .section p, .section li {
+    font-size: 0.9rem;
+    color: #a0a09a;
+    line-height: 1.6;
+  }
+
+  .section ul {
+    padding-left: 20px;
+  }
+
+  .section li {
+    margin-bottom: 6px;
+  }
+
+  /* Graphics List */
+  .graphics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .graphic-card {
+    background: #1a2220;
+    border: 1px solid #2a3a3a;
+    border-radius: 8px;
+    padding: 20px;
+  }
+
+  .graphic-card h4 {
+    font-size: 0.9rem;
+    color: #e8c87a;
+    margin-bottom: 6px;
+  }
+
+  .graphic-card .format {
+    font-size: 0.75rem;
+    color: #5a7a6a;
+    margin-bottom: 8px;
+  }
+
+  .graphic-card p {
+    font-size: 0.8rem;
+    color: #8a9a8a;
+  }
+
+  /* April Review Section */
+  .review-section {
+    background: #1a1a10;
+    border: 1px solid #4a4a2a;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 40px 0;
+  }
+
+  .review-section h3 {
+    color: #e8c87a;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+  }
+
+  .review-section p {
+    color: #a0a09a;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+  }
+
+  .review-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .review-grid .review-item {
+    text-align: center;
+  }
+
+  .review-grid img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #3a3a2a;
+  }
+
+  .review-grid .review-label {
+    font-size: 0.75rem;
+    color: #8a8a6a;
+    margin-top: 6px;
+    font-family: monospace;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 48px 24px;
+    text-align: center;
+    border-top: 1px solid #2a3a3a;
+    margin-top: 60px;
+  }
+
+  .footer p {
+    font-size: 0.8rem;
+    color: #4a5a4a;
+  }
+
+  /* Asset tag */
+  .asset-tag {
+    display: inline-block;
+    background: #1a2a2a;
+    color: #6a9a8a;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-family: monospace;
+    margin-right: 4px;
+  }
+
+  .cta-badge {
+    display: inline-block;
+    background: #2a2a1a;
+    color: #d0c080;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 8px;
+  }
 </style>
 </head>
 <body>
 
+<!-- HERO -->
 <div class="hero">
   <h1>SHAG 2026</h1>
-  <div class="subtitle">4-Week Instagram Campaign &mdash; v2</div>
+  <div class="subtitle">4-Week Instagram Campaign</div>
   <div class="dates">June 26 &ndash; 28 &nbsp;|&nbsp; Spring Hill Vineyards &nbsp;|&nbsp; New Preston, CT</div>
   <div class="meta">
-    @springhillartsgathering &nbsp;&bull;&nbsp; 20 posts &nbsp;&bull;&nbsp; 5x/week &nbsp;&bull;&nbsp; May 27 &ndash; June 25
-    <br>Prepared by Rowe Media Group &nbsp;&bull;&nbsp; May 27, 2026 &nbsp;&bull;&nbsp; Artist-forward per Stephanie's direction
+    @springhillartsgathering &nbsp;&bull;&nbsp; 12 posts &nbsp;&bull;&nbsp; 3x/week &nbsp;&bull;&nbsp; May 26 &ndash; June 25
+    <br>Prepared by Rowe Media Group &nbsp;&bull;&nbsp; May 26, 2026
   </div>
 </div>
 
 <div class="container">
 
-<!-- ========== WEEK 1 ========== -->
+<!-- ============================================================ -->
+<!-- APRIL PHOTOS — REVIEW -->
+<!-- ============================================================ -->
+
+<!-- April 2026 photos confirmed as Ticking Tent (separate event) — excluded from SHAG campaign -->
+
+
+<!-- ============================================================ -->
+<!-- WEEK 1 -->
+<!-- ============================================================ -->
+
 <div class="week-header">
-  <h2>Week 1 &mdash; Meet Who's Coming</h2>
-  <div class="week-theme">"The artists are here. The lineup is real."</div>
-  <div class="week-dates">May 27, 28, 29, 30, 31</div>
+  <h2>Week 1 &mdash; Awareness</h2>
+  <div class="week-theme">"Something's coming to the hills."</div>
+  <div class="week-dates">May 26, 28, 30</div>
 </div>
 
 <!-- POST 1 -->
@@ -90,30 +482,43 @@
   <div class="post-header">
     <div class="post-number">01</div>
     <div class="post-info">
-      <div class="post-date">Tuesday, May 27</div>
-      <div class="post-concept">"Saturday's headliner." &mdash; RIPE</div>
+      <div class="post-date">Monday, May 26 &mdash; TODAY</div>
+      <div class="post-concept">"SHAG is back."</div>
     </div>
     <div class="post-type-badge reel">Reel</div>
   </div>
   <div class="post-images single">
-    <video class="post-video" controls preload="metadata"><source src="media/ripe-levitate.mp4" type="video/mp4"></video>
-    <div class="video-label">Ripe_LevitateShort.mp4 &mdash; 20s &mdash; already 9:16</div>
+    <video class="post-video" controls preload="metadata">
+      <source src="media/SHAG-FULL-RECAP-V2.mp4" type="video/mp4">
+    </video>
+    <div class="video-label">SHAG FULL RECAP V2.mp4 &mdash; 59s</div>
   </div>
   <div class="post-caption">
     <h4>Caption</h4>
-    <div class="caption-text">Saturday, June 27.
+    <div class="caption-text">Three days. Art in every direction.
 
-@raboripe takes the stage at Spring Hill.
+SHAG returns to the Litchfield Hills.
+June 26&ndash;28 at Spring Hill Vineyards.
 
-Three days of music, art, and gathering in the Litchfield Hills.
-June 26&ndash;28. New Preston, CT.
+Friday: SHAG with Pride &mdash; a House of Yes takeover
+Saturday: RIPE. Reggie Watts. Alphonso Horne &amp; The Gotham Kings.
+Sunday: Family Day with Stretch Armstrong and Rock &amp; Roll Playhouse.
 
-Tickets &rarr; link in bio
+Tickets at the link in bio.
 
-<span class="hashtags">#SpringHillArtsGathering #SHAGCT #RIPE</span></div>
-    <div class="cta-badge">CTA: Tickets in bio</div>
+<span class="hashtags">#SpringHillArtsGathering #SHAGCT #LitchfieldHills</span></div>
+    <div class="cta-badge">CTA: Link in bio &rarr; ticket page</div>
   </div>
-  <div class="post-details"><div class="detail-block"><h5>Goal</h5><p>Open the campaign with energy. Fresh artist video, already vertical. No editing needed. Announces Saturday's headliner immediately.</p></div></div>
+  <div class="post-details">
+    <div class="detail-block">
+      <h5>Goal</h5>
+      <p>Announce the festival is back. Set the tone. Let people feel it before they read anything.</p>
+    </div>
+  </div>
+  <div class="post-notes">
+    <h5>Editing Notes</h5>
+    <p>Video is landscape (16:9) &mdash; reframe to 9:16 vertical if possible, or post as horizontal reel. Keep the strongest opening 3 seconds. Audio: keep original or overlay a trending indie track (Hozier / Khruangbin energy).</p>
+  </div>
 </div>
 
 <!-- POST 2 -->
@@ -122,28 +527,31 @@ Tickets &rarr; link in bio
     <div class="post-number">02</div>
     <div class="post-info">
       <div class="post-date">Wednesday, May 28</div>
-      <div class="post-concept">"Friday night's headliner." &mdash; Susannah Joffe</div>
+      <div class="post-concept">"This is where it happens."</div>
     </div>
     <div class="post-type-badge photo">Single Photo</div>
   </div>
   <div class="post-images single">
-    <img src="media/sj-paris-1.jpg" alt="Susannah Joffe — Paris selects">
+    <img src="media/SHAG-Wednesday-5018.jpg" alt="Wide property hero">
   </div>
   <div class="post-caption">
     <h4>Caption</h4>
-    <div class="caption-text">Friday night, June 26.
+    <div class="caption-text">Farmland, sculpture, and sky.
 
-@susannahjoffe headlines SHAG with Pride.
-A House of Yes takeover at Spring Hill Vineyards.
+This is where it happens.
+292 Bee Brook Road, New Preston, Connecticut.
 
-Doors at 5. Music until 10.
+June 26&ndash;28. Save the date.
 
-Tickets &rarr; link in bio
-
-<span class="hashtags">#SpringHillArtsGathering #SHAGCT #SusannahJoffe</span></div>
-    <div class="cta-badge">CTA: Tickets in bio</div>
+<span class="hashtags">#SpringHillArtsGathering #SHAGCT #NewPrestonCT</span></div>
+    <div class="cta-badge">CTA: Save this post / save the date</div>
   </div>
-  <div class="post-details"><div class="detail-block"><h5>Goal</h5><p>Introduce Friday's headliner. The Paris editorial shoot is striking and editorial-quality &mdash; stops the scroll.</p></div></div>
+  <div class="post-details">
+    <div class="detail-block">
+      <h5>Goal</h5>
+      <p>Show the property. Let people understand this isn't a parking-lot festival &mdash; this is rolling hills, stone, string lights, and art.</p>
+    </div>
+  </div>
 </div>
 
 <!-- POST 3 -->
@@ -151,17 +559,17 @@ Tickets &rarr; link in bio
   <div class="post-header">
     <div class="post-number">03</div>
     <div class="post-info">
-      <div class="post-date">Thursday, May 29</div>
-      <div class="post-concept">"The lineup." &mdash; Official drop</div>
+      <div class="post-date">Friday, May 30</div>
+      <div class="post-concept">"The lineup."</div>
     </div>
-    <div class="post-type-badge carousel">Carousel</div>
+    <div class="post-type-badge carousel">Carousel (2&ndash;3 slides)</div>
   </div>
   <div class="post-images">
     <div class="graphic-placeholder">
       <div class="label">Slide 1: Lineup Poster</div>
-      <div class="desc">The 2026 retro poster &mdash; all three days, full lineup</div>
+      <div class="desc">The 2026 retro poster with all three days, full lineup, and festival details. Provided by client.</div>
     </div>
-    <img src="media/property-amphitheater.jpg" alt="Amphitheater" style="max-height:380px;">
+    <img src="media/SHAG-Wednesday-5096.jpg" alt="Amphitheater from above" style="max-height:380px;">
   </div>
   <div class="post-caption">
     <h4>Caption</h4>
@@ -172,11 +580,11 @@ House of Yes takeover. Susannah Joffe. The Bad Judies. Boyyyish.
 5&ndash;10pm.
 
 Saturday, June 27
-RIPE. Reggie Watts. Alphonso Horne &amp; The Gotham Kings. YoungArts alumni.
+RIPE. Reggie Watts. Alphonso Horne &amp; The Gotham Kings. A special performance from YoungArts alumni.
 5&ndash;10pm.
 
 Sunday, June 28 &mdash; Family Day
-Stretch Armstrong. Rock &amp; Roll Playhouse. Washington Art Association.
+Stretch Armstrong. Rock &amp; Roll Playhouse. Children's art activities with Washington Art Association.
 12&ndash;5pm.
 
 Three days of music, art, and gathering in the Litchfield Hills.
@@ -185,9 +593,29 @@ Tickets &rarr; link in bio
 springhillartsgathering.com
 
 <span class="hashtags">#SpringHillArtsGathering #SHAGCT #LitchfieldHills #PrideInTheHills</span></div>
-    <div class="cta-badge">CTA: Share with someone you'd bring</div>
+    <div class="cta-badge">CTA: Share this with someone you'd bring. Tickets in bio.</div>
   </div>
-  <div class="post-notes"><h5>Collab</h5><p>IG Collab with @springhillvineyards &mdash; taps their 13K followers for the lineup reveal.</p></div>
+  <div class="post-details">
+    <div class="detail-block">
+      <h5>Goal</h5>
+      <p>Official full-lineup drop. Biggest information post of the campaign. Should be saveable and shareable.</p>
+    </div>
+  </div>
+  <div class="post-notes">
+    <h5>Collab Opportunity</h5>
+    <p>This is one of 2 recommended IG Collab posts with @springhillvineyards to tap into their 13K followers. Use IG's Collab feature so it appears on both grids.</p>
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- WEEK 2 -->
+<!-- ============================================================ -->
+
+<div class="week-header">
+  <h2>Week 2 &mdash; Discovery</h2>
+  <div class="week-theme">"Here's who's coming. Here's what you'll find."</div>
+  <div class="week-dates">June 2, 4, 6</div>
 </div>
 
 <!-- POST 4 -->
@@ -195,14 +623,16 @@ springhillartsgathering.com
   <div class="post-header">
     <div class="post-number">04</div>
     <div class="post-info">
-      <div class="post-date">Friday, May 30</div>
+      <div class="post-date">Monday, June 2</div>
       <div class="post-concept">"House of Yes takes over." &mdash; @houseofyes Collab</div>
     </div>
     <div class="post-type-badge reel">Reel + Collab</div>
   </div>
   <div class="post-images single">
-    <video class="post-video" controls preload="metadata"><source src="media/hoy-animation.mp4" type="video/mp4"></video>
-    <div class="video-label">House of yes animation.mp4 &mdash; 8s &mdash; already 9:16</div>
+    <video class="post-video" controls preload="metadata">
+      <source src="media/House-of-yes-animation.mp4" type="video/mp4">
+    </video>
+    <div class="video-label">media/House-of-yes-animation.mp4 &mdash; 8s &mdash; already 9:16 vertical</div>
   </div>
   <div class="post-caption">
     <h4>Caption</h4>
@@ -214,13 +644,23 @@ Susannah Joffe headlines.
 The Bad Judies and Boyyyish round out the evening.
 
 June 26. Doors at 5. Music until 10.
+The hills have never looked like this.
 
 Tickets &rarr; link in bio
 
 <span class="hashtags">#SpringHillArtsGathering #SHAGCT #PrideInTheHills #HouseOfYes</span></div>
-    <div class="cta-badge">CTA: Tag someone for Friday night</div>
+    <div class="cta-badge">CTA: Tag someone you're bringing Friday night</div>
   </div>
-  <div class="post-notes"><h5>Collab</h5><p>IG Collab with @houseofyes. Tag @susannahjoffe @thebadjudies @boyyyish.</p></div>
+  <div class="post-details">
+    <div class="detail-block">
+      <h5>Goal</h5>
+      <p>Announce the House of Yes takeover for Friday night. The HOY animation is punchy, branded, and already vertical &mdash; it stands alone as a short-form reel. Short reels often outperform longer ones in reach.</p>
+    </div>
+  </div>
+  <div class="post-notes">
+    <h5>Collab Opportunity</h5>
+    <p><strong>IG Collab post with @houseofyes.</strong> Their audience (Brooklyn nightlife / queer / arts community) is the exact Friday night demographic. Tag @houseofyes as collaborator so the reel appears on both grids. Also tag @susannahjoffe, @thebadjudies, @boyyyish in the post.</p>
+  </div>
 </div>
 
 <!-- POST 5 -->
@@ -228,113 +668,16 @@ Tickets &rarr; link in bio
   <div class="post-header">
     <div class="post-number">05</div>
     <div class="post-info">
-      <div class="post-date">Saturday, May 31</div>
-      <div class="post-concept">"Friday night gets loud." &mdash; Boyyyish</div>
-    </div>
-    <div class="post-type-badge carousel">Carousel</div>
-  </div>
-  <div class="post-images">
-    <img src="media/boyyyish-dj-mural.jpg" alt="Boyyyish DJ mural" style="max-height:380px;">
-    <img src="media/boyyyish-energy.jpg" alt="Boyyyish energy" style="max-height:380px;">
-    <img src="media/boyyyish-silver.jpg" alt="Boyyyish silver" style="max-height:380px;">
-    <img src="media/boyyyish-dj-teal.jpg" alt="Boyyyish DJ teal" style="max-height:380px;">
-  </div>
-  <div class="post-caption">
-    <h4>Caption</h4>
-    <div class="caption-text">Friday night at SHAG.
-
-@boyyyish brings the decks, the energy, and the whole room with them.
-
-Part of the House of Yes takeover. June 26, 5&ndash;10pm.
-
-Tickets &rarr; link in bio
-
-<span class="hashtags">#SpringHillArtsGathering #SHAGCT #Boyyyish #PrideInTheHills</span></div>
-    <div class="cta-badge">CTA: Tickets in bio</div>
-  </div>
-</div>
-
-<!-- ========== WEEK 2 ========== -->
-<div class="week-header">
-  <h2>Week 2 &mdash; What Each Night Sounds Like</h2>
-  <div class="week-theme">"Now you can hear it."</div>
-  <div class="week-dates">June 2, 3, 4, 5, 7</div>
-</div>
-
-<!-- POST 6 -->
-<div class="post-card">
-  <div class="post-header">
-    <div class="post-number">06</div>
-    <div class="post-info">
-      <div class="post-date">Monday, June 2</div>
-      <div class="post-concept">"Susannah Joffe &mdash; You Ruin Paris"</div>
-    </div>
-    <div class="post-type-badge reel">Reel</div>
-  </div>
-  <div class="post-images single">
-    <video class="post-video" controls preload="metadata"><source src="media/sj-youruinparis.mp4" type="video/mp4"></video>
-    <div class="video-label">YOU RUIN PARIS FINAL.mp4 &mdash; clip &mdash; use her music as reel audio</div>
-  </div>
-  <div class="post-caption">
-    <h4>Caption</h4>
-    <div class="caption-text">This is what Friday night sounds like.
-
-@susannahjoffe headlines SHAG with Pride.
-June 26 at Spring Hill Vineyards.
-
-Tickets &rarr; link in bio
-
-<span class="hashtags">#SpringHillArtsGathering #SHAGCT #SusannahJoffe #YouRuinParis</span></div>
-    <div class="cta-badge">CTA: Save this. Tickets in bio.</div>
-  </div>
-  <div class="post-details"><div class="detail-block"><h5>Goal</h5><p>Stephanie asked for performer music in posts. This is a polished music video &mdash; pull 20&ndash;30s of the strongest section. Use her track as the reel audio.</p></div></div>
-</div>
-
-<!-- POST 7 -->
-<div class="post-card">
-  <div class="post-header">
-    <div class="post-number">07</div>
-    <div class="post-info">
-      <div class="post-date">Tuesday, June 3</div>
-      <div class="post-concept">"This is what Saturday sounds like." &mdash; RIPE live</div>
-    </div>
-    <div class="post-type-badge reel">Reel</div>
-  </div>
-  <div class="post-images single">
-    <video class="post-video" controls preload="metadata"><source src="media/ripe-live.mp4" type="video/mp4"></video>
-    <div class="video-label">LMF23_Ripe.mov &mdash; 20s &mdash; already ~9:16 &mdash; live performance</div>
-  </div>
-  <div class="post-caption">
-    <h4>Caption</h4>
-    <div class="caption-text">Saturday, June 27.
-
-@raboripe live at Spring Hill.
-
-Gates open at 5. Music until 10.
-Bring someone worth sharing this with.
-
-Tickets &rarr; link in bio
-
-<span class="hashtags">#SpringHillArtsGathering #SHAGCT #RIPE</span></div>
-    <div class="cta-badge">CTA: Share with your Saturday crew</div>
-  </div>
-</div>
-
-<!-- POST 8 -->
-<div class="post-card">
-  <div class="post-header">
-    <div class="post-number">08</div>
-    <div class="post-info">
       <div class="post-date">Wednesday, June 4</div>
-      <div class="post-concept">"This isn't a parking lot with a stage."</div>
+      <div class="post-concept">"The art and the land."</div>
     </div>
     <div class="post-type-badge carousel">Carousel (4 photos)</div>
   </div>
   <div class="post-images">
-    <img src="media/property-amphitheater.jpg" alt="Amphitheater" style="max-height:380px;">
-    <img src="media/property-sculpture.jpg" alt="Sculpture" style="max-height:380px;">
-    <img src="media/property-statue.jpg" alt="Statue + silo" style="max-height:380px;">
-    <img src="media/property-lounge.jpg" alt="Gather lounge" style="max-height:380px;">
+    <img src="media/SHAG-Wednesday-5096.jpg" alt="Amphitheater" style="max-height:380px;">
+    <img src="media/SHAG-Wednesday-5076.jpg" alt="Sculpture" style="max-height:380px;">
+    <img src="media/SHAG-Wednesday-5136.jpg" alt="Statue + silo" style="max-height:380px;">
+    <img src="media/SHAG-Wednesday-5644.jpg" alt="Gather lounge" style="max-height:380px;">
   </div>
   <div class="post-caption">
     <h4>Caption</h4>
@@ -350,6 +693,154 @@ June 26&ndash;28. New Preston, CT.
 <span class="hashtags">#SpringHillArtsGathering #SHAGCT #LitchfieldHills</span></div>
     <div class="cta-badge">CTA: Save this for when someone asks "what's SHAG?"</div>
   </div>
+  <div class="post-details">
+    <div class="detail-block">
+      <h5>Goal</h5>
+      <p>Show that this festival is embedded in a world-class art property. This is the "this isn't a parking lot with a stage" post.</p>
+    </div>
+  </div>
+</div>
+
+<!-- POST 6 -->
+<div class="post-card">
+  <div class="post-header">
+    <div class="post-number">06</div>
+    <div class="post-info">
+      <div class="post-date">Friday, June 6</div>
+      <div class="post-concept">"Saturday: RIPE + Reggie Watts."</div>
+    </div>
+    <div class="post-type-badge carousel">Carousel (2&ndash;3 slides)</div>
+  </div>
+  <div class="post-images">
+    <div class="graphic-placeholder">
+      <div class="label">Slide 1: Saturday Lineup Card</div>
+      <div class="desc">RIPE / Reggie Watts / Alphonso Horne &amp; The Gotham Kings / YoungArts Alumni. 5&ndash;10pm. Retro poster aesthetic.</div>
+    </div>
+    <img src="media/SHAG-Thursday-6816.jpg" alt="Golden hour hero" style="max-height:380px;">
+    <img src="media/SHAG-Thursday-7287.jpg" alt="Fire pit" style="max-height:380px;">
+  </div>
+  <div class="post-caption">
+    <h4>Caption</h4>
+    <div class="caption-text">Saturday, June 27.
+
+RIPE takes the stage at Spring Hill.
+Reggie Watts.
+Alphonso Horne and The Gotham Kings.
+A special set from YoungArts alumni.
+
+Gates open at 5. Music until 10.
+Bring a blanket. Bring someone worth sharing this with.
+
+Tickets &rarr; link in bio
+
+<span class="hashtags">#SpringHillArtsGathering #SHAGCT #RIPE #ReggieWatts</span></div>
+    <div class="cta-badge">CTA: Share with your Saturday crew. Tickets in bio.</div>
+  </div>
+  <div class="post-details">
+    <div class="detail-block">
+      <h5>Goal</h5>
+      <p>Feature Saturday headliners. RIPE and Reggie Watts are the biggest draws &mdash; this post should make Saturday feel unmissable.</p>
+    </div>
+  </div>
+  <div class="post-notes">
+    <h5>Graphic Needed</h5>
+    <p>Create a Saturday-specific lineup card in the retro poster aesthetic: teal, gold, red, vintage sunburst rays, same typography family. 1080x1350 (4:5).</p>
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- WEEK 3 -->
+<!-- ============================================================ -->
+
+<div class="week-header">
+  <h2>Week 3 &mdash; Urgency</h2>
+  <div class="week-theme">"This is almost here. You can practically feel it."</div>
+  <div class="week-dates">June 10, 12, 14</div>
+</div>
+
+<!-- POST 7 -->
+<div class="post-card">
+  <div class="post-header">
+    <div class="post-number">07</div>
+    <div class="post-info">
+      <div class="post-date">Tuesday, June 10</div>
+      <div class="post-concept">"This is what Friday night feels like."</div>
+    </div>
+    <div class="post-type-badge reel">Reel</div>
+  </div>
+  <div class="post-images single">
+    <video class="post-video" controls preload="metadata">
+      <source src="media/SHAG-Friday-Reel.mp4" type="video/mp4">
+    </video>
+    <div class="video-label">SHAG Friday Reel.mp4 &mdash; 54s</div>
+  </div>
+  <div class="post-caption">
+    <h4>Caption</h4>
+    <div class="caption-text">Golden hour at Spring Hill.
+
+Music carrying across the field. Art you stumble into. A fire pit you don't want to leave.
+
+Sixteen days.
+
+springhillartsgathering.com
+Link in bio for tickets.
+
+<span class="hashtags">#SpringHillArtsGathering #SHAGCT #LitchfieldHills</span></div>
+    <div class="cta-badge">CTA: Tickets in bio</div>
+  </div>
+  <div class="post-details">
+    <div class="detail-block">
+      <h5>Goal</h5>
+      <p>Pure atmosphere. Make people feel what it's like to be there. Emotional FOMO. No logistics &mdash; just a feeling. The Friday night footage has the best evening energy.</p>
+    </div>
+  </div>
+</div>
+
+<!-- POST 8 -->
+<div class="post-card">
+  <div class="post-header">
+    <div class="post-number">08</div>
+    <div class="post-info">
+      <div class="post-date">Thursday, June 12</div>
+      <div class="post-concept">"Sunday: Family Day."</div>
+    </div>
+    <div class="post-type-badge carousel">Carousel (2&ndash;3 slides)</div>
+  </div>
+  <div class="post-images">
+    <div class="graphic-placeholder">
+      <div class="label">Slide 1: Sunday / Family Day Card</div>
+      <div class="desc">Stretch Armstrong / Rock &amp; Roll Playhouse / Children's Art Activities (Washington Art Association). 12&ndash;5pm. Warmer retro treatment.</div>
+    </div>
+    <img src="media/SHAG-Saturday-0805.jpg" alt="Couple overlooking property" style="max-height:380px;">
+    <img src="media/SHAG-Wednesday-5640.jpg" alt="Young crowd" style="max-height:380px;">
+  </div>
+  <div class="post-caption">
+    <h4>Caption</h4>
+    <div class="caption-text">Sunday, June 28 &mdash; Family Day at Spring Hill.
+
+Stretch Armstrong on the decks.
+Rock &amp; Roll Playhouse for the kids (and the kids at heart).
+Hands-on art activities with Washington Art Association.
+
+Gates open at noon. Free-range afternoon in the Litchfield Hills.
+Bring the family. Bring a blanket. Bring an appetite.
+
+12&ndash;5pm. Tickets &rarr; link in bio.
+
+<span class="hashtags">#SpringHillArtsGathering #SHAGCT #FamilyDay #LitchfieldHills</span></div>
+    <div class="cta-badge">CTA: Tag a family that needs this Sunday</div>
+  </div>
+  <div class="post-details">
+    <div class="detail-block">
+      <h5>Goal</h5>
+      <p>Feature Sunday's programming. Broadens the audience beyond the Friday/Saturday crowd. Families, parents, Sunday-afternoon people.</p>
+    </div>
+  </div>
+  <div class="post-notes">
+    <h5>Graphic Needed</h5>
+    <p>Sunday/Family Day lineup card. Same retro poster family but warmer &mdash; lean into golds and warm teal. 1080x1350 (4:5).</p>
+  </div>
 </div>
 
 <!-- POST 9 -->
@@ -357,32 +848,46 @@ June 26&ndash;28. New Preston, CT.
   <div class="post-header">
     <div class="post-number">09</div>
     <div class="post-info">
-      <div class="post-date">Thursday, June 5</div>
-      <div class="post-concept">"Your Friday night lineup." &mdash; All Friday artists</div>
+      <div class="post-date">Saturday, June 14</div>
+      <div class="post-concept">"Twelve days."</div>
     </div>
-    <div class="post-type-badge carousel">Carousel</div>
+    <div class="post-type-badge photo">Single Photo</div>
   </div>
-  <div class="post-images">
-    <img src="media/sj-grassaxe-1.jpg" alt="Susannah Joffe" style="max-height:380px;">
-    <img src="media/boyyyish-dj-mural.jpg" alt="Boyyyish" style="max-height:380px;">
+  <div class="post-images single">
+    <img src="media/SHAG-Thursday-6816.jpg" alt="Golden hour wide hero">
   </div>
   <div class="post-caption">
     <h4>Caption</h4>
-    <div class="caption-text">Friday, June 26 &mdash; SHAG with Pride.
+    <div class="caption-text">Twelve days out.
 
-@susannahjoffe.
-@thebadjudies.
-@boyyyish.
-A House of Yes takeover.
+The barn. The silo. The fire.
+About to come alive again.
 
-5&ndash;10pm at Spring Hill Vineyards.
-This is how the weekend starts.
+June 26&ndash;28 in New Preston.
+You know where to find us.
 
 Tickets &rarr; link in bio
 
-<span class="hashtags">#SpringHillArtsGathering #SHAGCT #PrideInTheHills</span></div>
-    <div class="cta-badge">CTA: Tag your Friday crew</div>
+<span class="hashtags">#SpringHillArtsGathering #SHAGCT</span></div>
+    <div class="cta-badge">CTA: Tickets. Link in bio.</div>
   </div>
+  <div class="post-details">
+    <div class="detail-block">
+      <h5>Goal</h5>
+      <p>Pure FOMO. No lineup info, no logistics &mdash; just an image that makes you ache to be there. The emotional peak before the final countdown.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- WEEK 4 -->
+<!-- ============================================================ -->
+
+<div class="week-header">
+  <h2>Week 4 &mdash; Countdown</h2>
+  <div class="week-theme">"It's here. Don't miss it."</div>
+  <div class="week-dates">June 18, 23, 25</div>
 </div>
 
 <!-- POST 10 -->
@@ -390,36 +895,39 @@ Tickets &rarr; link in bio
   <div class="post-header">
     <div class="post-number">10</div>
     <div class="post-info">
-      <div class="post-date">Saturday, June 7</div>
-      <div class="post-concept">"Susannah Joffe. Grass Axe."</div>
+      <div class="post-date">Wednesday, June 18</div>
+      <div class="post-concept">"Every corner of this place."</div>
     </div>
     <div class="post-type-badge carousel">Carousel (4 photos)</div>
   </div>
   <div class="post-images">
-    <img src="media/sj-grassaxe-2.jpg" alt="SJ Grass Axe 1" style="max-height:380px;">
-    <img src="media/sj-grassaxe-1.jpg" alt="SJ Grass Axe 2" style="max-height:380px;">
-    <img src="media/sj-grassaxe-3.jpg" alt="SJ Grass Axe 3" style="max-height:380px;">
-    <img src="media/sj-grassaxe-4.jpg" alt="SJ Grass Axe 4" style="max-height:380px;">
+    <img src="media/SHAG-Thursday-6778.jpg" alt="Fire circle at dusk" style="max-height:380px;">
+    <img src="media/SHAG-Sunday-4203.jpg" alt="Dreamy property through ferns" style="max-height:380px;">
+    <img src="media/SHAG-Thursday-6980.jpg" alt="Crowd walking grounds" style="max-height:380px;">
+    <img src="media/SHAG-Wednesday-5150.jpg" alt="Dramatic silo" style="max-height:380px;">
   </div>
   <div class="post-caption">
     <h4>Caption</h4>
-    <div class="caption-text">@susannahjoffe.
+    <div class="caption-text">The fire circle at dusk.
+A stage carved from stone, hidden in the trees.
+A crowd that walks like they already know where they belong.
+A silo that glows from the inside out.
 
-Friday night at Spring Hill. The stage is hers.
+Every corner of this place was built for something.
+Come find your spot.
 
-June 26, 5&ndash;10pm.
+Eight days. June 26&ndash;28 in New Preston.
 Tickets &rarr; link in bio
 
-<span class="hashtags">#SpringHillArtsGathering #SHAGCT #SusannahJoffe</span></div>
-    <div class="cta-badge">CTA: Tickets in bio</div>
+<span class="hashtags">#SpringHillArtsGathering #SHAGCT #LitchfieldHills</span></div>
+    <div class="cta-badge">CTA: Save this. Share it with your crew. Tickets in bio.</div>
   </div>
-</div>
-
-<!-- ========== WEEK 3 ========== -->
-<div class="week-header">
-  <h2>Week 3 &mdash; It's Almost Here</h2>
-  <div class="week-theme">"You can practically feel it."</div>
-  <div class="week-dates">June 9, 11, 12, 13, 14</div>
+  <div class="post-details">
+    <div class="detail-block">
+      <h5>Goal</h5>
+      <p>One week out. Show the different textures and corners of the property &mdash; fire, forest, crowd, architecture. Each slide is a different mood. Builds "you need to be here" energy.</p>
+    </div>
+  </div>
 </div>
 
 <!-- POST 11 -->
@@ -427,27 +935,35 @@ Tickets &rarr; link in bio
   <div class="post-header">
     <div class="post-number">11</div>
     <div class="post-info">
-      <div class="post-date">Monday, June 9</div>
-      <div class="post-concept">"RIPE at Spring Hill." &mdash; Band + venue</div>
+      <div class="post-date">Monday, June 23</div>
+      <div class="post-concept">"Three days."</div>
     </div>
-    <div class="post-type-badge carousel">Carousel</div>
+    <div class="post-type-badge photo">Single Photo</div>
   </div>
-  <div class="post-images">
-    <img src="media/ripe-press.jpg" alt="RIPE press photo" style="max-height:380px;">
-    <img src="media/property-wide.jpg" alt="Spring Hill property" style="max-height:380px;">
+  <div class="post-images single">
+    <img src="media/SHAG-Thursday-7287.jpg" alt="Fire pit with flame">
   </div>
   <div class="post-caption">
     <h4>Caption</h4>
-    <div class="caption-text">@raboripe. Spring Hill Vineyards. June 27.
+    <div class="caption-text">Three days.
 
-Plus Reggie Watts. Alphonso Horne and The Gotham Kings. YoungArts alumni.
+Friday: SHAG with Pride. House of Yes. Susannah Joffe.
+Saturday: RIPE. Reggie Watts. Alphonso Horne &amp; The Gotham Kings.
+Sunday: Family Day. Stretch Armstrong. Rock &amp; Roll Playhouse.
 
-Gates open at 5. Music until 10.
+This is your weekend.
 
+springhillartsgathering.com
 Tickets &rarr; link in bio
 
-<span class="hashtags">#SpringHillArtsGathering #SHAGCT #RIPE #ReggieWatts</span></div>
-    <div class="cta-badge">CTA: Tickets in bio</div>
+<span class="hashtags">#SpringHillArtsGathering #SHAGCT</span></div>
+    <div class="cta-badge">CTA: Last call for tickets. Link in bio.</div>
+  </div>
+  <div class="post-details">
+    <div class="detail-block">
+      <h5>Goal</h5>
+      <p>The urgency spike. Three days out. Fire = literal and metaphorical. Caption re-lists the full lineup one more time.</p>
+    </div>
   </div>
 </div>
 
@@ -456,260 +972,16 @@ Tickets &rarr; link in bio
   <div class="post-header">
     <div class="post-number">12</div>
     <div class="post-info">
-      <div class="post-date">Wednesday, June 11</div>
-      <div class="post-concept">"Sunday is Family Day." &mdash; Rock &amp; Roll Playhouse</div>
-    </div>
-    <div class="post-type-badge reel">Reel</div>
-  </div>
-  <div class="post-images single">
-    <video class="post-video" controls preload="metadata"><source src="media/rrph.mp4" type="video/mp4"></video>
-    <div class="video-label">rrph-generic_1080x1920.mp4 &mdash; 15s &mdash; already 9:16</div>
-  </div>
-  <div class="post-caption">
-    <h4>Caption</h4>
-    <div class="caption-text">Sunday, June 28 &mdash; Family Day at Spring Hill.
-
-@rockandrollplayhouse for the kids (and the kids at heart).
-Stretch Armstrong on the decks.
-Hands-on art with Washington Art Association.
-
-Gates open at noon. 12&ndash;5pm.
-Tickets &rarr; link in bio.
-
-<span class="hashtags">#SpringHillArtsGathering #SHAGCT #FamilyDay #RockAndRollPlayhouse</span></div>
-    <div class="cta-badge">CTA: Tag a family that needs this Sunday</div>
-  </div>
-</div>
-
-<!-- POST 13 -->
-<div class="post-card">
-  <div class="post-header">
-    <div class="post-number">13</div>
-    <div class="post-info">
-      <div class="post-date">Thursday, June 12</div>
-      <div class="post-concept">"Texas Baby." &mdash; Susannah Joffe B-roll</div>
-    </div>
-    <div class="post-type-badge reel">Reel</div>
-  </div>
-  <div class="post-images single">
-    <video class="post-video" controls preload="metadata"><source src="media/sj-texasbaby.mp4" type="video/mp4"></video>
-    <div class="video-label">SJ Texas Baby BRoll.mp4 &mdash; 4K source, trimmed to 25s &mdash; use her music as audio</div>
-  </div>
-  <div class="post-caption">
-    <h4>Caption</h4>
-    <div class="caption-text">@susannahjoffe. Two weeks.
-
-Friday, June 26 at Spring Hill.
-
-Tickets &rarr; link in bio
-
-<span class="hashtags">#SpringHillArtsGathering #SHAGCT #SusannahJoffe</span></div>
-    <div class="cta-badge">CTA: Tickets in bio</div>
-  </div>
-</div>
-
-<!-- POST 14 -->
-<div class="post-card">
-  <div class="post-header">
-    <div class="post-number">14</div>
-    <div class="post-info">
-      <div class="post-date">Friday, June 13</div>
-      <div class="post-concept">"Boyyyish." &mdash; Performance clip</div>
-    </div>
-    <div class="post-type-badge reel">Reel</div>
-  </div>
-  <div class="post-images single">
-    <video class="post-video" controls preload="metadata"><source src="media/boyyyish-clip.mp4" type="video/mp4"></video>
-    <div class="video-label">boyyyish_video1.mp4 &mdash; 10s</div>
-  </div>
-  <div class="post-caption">
-    <h4>Caption</h4>
-    <div class="caption-text">Friday night energy.
-
-@boyyyish at SHAG with Pride.
-June 26, 5&ndash;10pm.
-
-Tickets &rarr; link in bio
-
-<span class="hashtags">#SpringHillArtsGathering #SHAGCT #Boyyyish</span></div>
-    <div class="cta-badge">CTA: Tickets in bio</div>
-  </div>
-</div>
-
-<!-- POST 15 -->
-<div class="post-card">
-  <div class="post-header">
-    <div class="post-number">15</div>
-    <div class="post-info">
-      <div class="post-date">Saturday, June 14</div>
-      <div class="post-concept">"Twelve days."</div>
-    </div>
-    <div class="post-type-badge photo">Single Photo</div>
-  </div>
-  <div class="post-images single">
-    <img src="media/sj-paris-2.jpg" alt="Susannah Joffe editorial">
-  </div>
-  <div class="post-caption">
-    <h4>Caption</h4>
-    <div class="caption-text">Twelve days out.
-
-June 26&ndash;28 in New Preston.
-You know where to find us.
-
-Tickets &rarr; link in bio
-
-<span class="hashtags">#SpringHillArtsGathering #SHAGCT</span></div>
-    <div class="cta-badge">CTA: Tickets in bio</div>
-  </div>
-</div>
-
-<!-- ========== WEEK 4 ========== -->
-<div class="week-header">
-  <h2>Week 4 &mdash; This Is Your Weekend</h2>
-  <div class="week-theme">"It's here. Don't miss it."</div>
-  <div class="week-dates">June 16, 18, 20, 23, 25</div>
-</div>
-
-<!-- POST 16 -->
-<div class="post-card">
-  <div class="post-header">
-    <div class="post-number">16</div>
-    <div class="post-info">
-      <div class="post-date">Monday, June 16</div>
-      <div class="post-concept">"10 days." &mdash; Full schedule</div>
-    </div>
-    <div class="post-type-badge graphic">Graphic</div>
-  </div>
-  <div class="post-images single">
-    <div class="graphic-placeholder" style="width:100%;max-width:400px;">
-      <div class="label">Full 3-Day Schedule Card</div>
-      <div class="desc">All days, times, acts. Retro poster style. Saveable reference. 1080&times;1350 (4:5).</div>
-    </div>
-  </div>
-  <div class="post-caption">
-    <h4>Caption</h4>
-    <div class="caption-text">Ten days. Here's the full schedule.
-
-Friday, June 26 &mdash; SHAG with Pride. 5&ndash;10pm.
-Susannah Joffe. The Bad Judies. Boyyyish. A House of Yes takeover.
-
-Saturday, June 27. 5&ndash;10pm.
-RIPE. Reggie Watts. Alphonso Horne &amp; The Gotham Kings. YoungArts alumni.
-
-Sunday, June 28 &mdash; Family Day. 12&ndash;5pm.
-Stretch Armstrong. Rock &amp; Roll Playhouse. Washington Art Association.
-
-Save this. Plan your weekend.
-
-Tickets &rarr; link in bio
-
-<span class="hashtags">#SpringHillArtsGathering #SHAGCT</span></div>
-    <div class="cta-badge">CTA: Save this post</div>
-  </div>
-</div>
-
-<!-- POST 17 -->
-<div class="post-card">
-  <div class="post-header">
-    <div class="post-number">17</div>
-    <div class="post-info">
-      <div class="post-date">Wednesday, June 18</div>
-      <div class="post-concept">"One week. Friday starts with her."</div>
-    </div>
-    <div class="post-type-badge photo">Single Photo</div>
-  </div>
-  <div class="post-images single">
-    <img src="media/sj-paris-3.jpg" alt="Susannah Joffe film scan">
-  </div>
-  <div class="post-caption">
-    <h4>Caption</h4>
-    <div class="caption-text">One week.
-
-@susannahjoffe. Friday night at Spring Hill.
-June 26, 5&ndash;10pm.
-
-Tickets &rarr; link in bio
-
-<span class="hashtags">#SpringHillArtsGathering #SHAGCT #SusannahJoffe</span></div>
-    <div class="cta-badge">CTA: Tickets in bio</div>
-  </div>
-</div>
-
-<!-- POST 18 -->
-<div class="post-card">
-  <div class="post-header">
-    <div class="post-number">18</div>
-    <div class="post-info">
-      <div class="post-date">Friday, June 20</div>
-      <div class="post-concept">"One week until Saturday."</div>
-    </div>
-    <div class="post-type-badge carousel">Carousel</div>
-  </div>
-  <div class="post-images">
-    <img src="media/ripe-press.jpg" alt="RIPE" style="max-height:380px;">
-    <img src="media/property-lounge.jpg" alt="Spring Hill lounge" style="max-height:380px;">
-  </div>
-  <div class="post-caption">
-    <h4>Caption</h4>
-    <div class="caption-text">One week until Saturday.
-
-@raboripe. Reggie Watts. Alphonso Horne &amp; The Gotham Kings.
-
-June 27 at Spring Hill. Gates at 5. Music until 10.
-
-Tickets &rarr; link in bio
-
-<span class="hashtags">#SpringHillArtsGathering #SHAGCT #RIPE #ReggieWatts</span></div>
-    <div class="cta-badge">CTA: Tickets in bio</div>
-  </div>
-</div>
-
-<!-- POST 19 -->
-<div class="post-card">
-  <div class="post-header">
-    <div class="post-number">19</div>
-    <div class="post-info">
-      <div class="post-date">Monday, June 23</div>
-      <div class="post-concept">"Three days." &mdash; One slide per day</div>
-    </div>
-    <div class="post-type-badge carousel">Carousel (3 slides)</div>
-  </div>
-  <div class="post-images">
-    <img src="media/sj-paris-1.jpg" alt="Susannah Joffe — Friday" style="max-height:380px;">
-    <img src="media/ripe-press.jpg" alt="RIPE — Saturday" style="max-height:380px;">
-    <img src="media/boyyyish-portrait.jpg" alt="Boyyyish — Friday" style="max-height:380px;">
-  </div>
-  <div class="post-caption">
-    <h4>Caption</h4>
-    <div class="caption-text">Three days.
-
-Friday: SHAG with Pride. House of Yes. @susannahjoffe. @thebadjudies. @boyyyish.
-Saturday: @raboripe. Reggie Watts. Alphonso Horne &amp; The Gotham Kings.
-Sunday: Family Day. Stretch Armstrong. @rockandrollplayhouse.
-
-This is your weekend.
-
-springhillartsgathering.com
-Tickets &rarr; link in bio
-
-<span class="hashtags">#SpringHillArtsGathering #SHAGCT</span></div>
-    <div class="cta-badge">CTA: Last call for tickets</div>
-  </div>
-</div>
-
-<!-- POST 20 -->
-<div class="post-card">
-  <div class="post-header">
-    <div class="post-number">20</div>
-    <div class="post-info">
       <div class="post-date">Wednesday, June 25</div>
       <div class="post-concept">"Tomorrow."</div>
     </div>
     <div class="post-type-badge reel">Reel</div>
   </div>
   <div class="post-images single">
-    <video class="post-video" controls preload="metadata"><source src="media/ripe-levitate.mp4" type="video/mp4"></video>
-    <div class="video-label">Best artist clip &mdash; RIPE Levitate or Susannah Joffe &mdash; their music as audio</div>
+    <video class="post-video" controls preload="metadata">
+      <source src="media/SHAG-Saturday.mp4" type="video/mp4">
+    </video>
+    <div class="video-label">SHAG Saturday.mp4 &mdash; 52s</div>
   </div>
   <div class="post-caption">
     <h4>Caption</h4>
@@ -723,40 +995,187 @@ See you at Spring Hill.
 Tickets still available &rarr; link in bio
 
 <span class="hashtags">#SpringHillArtsGathering #SHAGCT</span></div>
-    <div class="cta-badge">CTA: See you tomorrow</div>
+    <div class="cta-badge">CTA: See you tomorrow. Tickets at the link.</div>
   </div>
-  <div class="post-notes"><h5>Collab</h5><p>IG Collab with @springhillvineyards. Final push to widest audience.</p></div>
+  <div class="post-details">
+    <div class="detail-block">
+      <h5>Goal</h5>
+      <p>The final post before doors open. Maximum energy, maximum emotion. Make anyone on the fence buy a ticket tonight.</p>
+    </div>
+  </div>
+  <div class="post-notes">
+    <h5>Collab Opportunity</h5>
+    <p>Second recommended IG Collab post with @springhillvineyards. Final push to the widest possible audience. Use IG's Collab feature.</p>
+  </div>
 </div>
 
 
-<!-- ========== GRAPHICS ========== -->
+<!-- ============================================================ -->
+<!-- GRAPHICS TO CREATE -->
+<!-- ============================================================ -->
+
 <div class="section">
   <h2>Graphics to Create</h2>
-  <p>Retro 70s poster aesthetic &mdash; teal, gold, red, vintage rays, disco ball.</p>
+  <p>All should follow the <strong>retro 70s poster aesthetic</strong> &mdash; teal, gold, red, vintage rays, disco ball, same typography family as the main poster.</p>
   <div class="graphics-grid">
-    <div class="graphic-card"><h4>Saturday Lineup Card</h4><div class="format">1080 &times; 1350</div><p>RIPE / Reggie Watts / Alphonso Horne / YoungArts. 5&ndash;10pm.</p></div>
-    <div class="graphic-card"><h4>Sunday / Family Day Card</h4><div class="format">1080 &times; 1350</div><p>Stretch Armstrong / RRPH / Washington Art Assoc. 12&ndash;5pm.</p></div>
-    <div class="graphic-card"><h4>Full 3-Day Schedule</h4><div class="format">1080 &times; 1350</div><p>All days, times, acts. Saveable reference. Used in Post 16.</p></div>
-    <div class="graphic-card"><h4>Countdown Graphics</h4><div class="format">1080 &times; 1920</div><p>Story-only. "3 Days" + "Tomorrow" variants.</p></div>
+    <div class="graphic-card">
+      <h4>Saturday Lineup Card</h4>
+      <div class="format">1080 &times; 1350 (4:5)</div>
+      <p>RIPE / Reggie Watts / Alphonso Horne &amp; The Gotham Kings / YoungArts Alumni. 5&ndash;10pm. Used in Post 6.</p>
+    </div>
+    <div class="graphic-card">
+      <h4>Sunday / Family Day Card</h4>
+      <div class="format">1080 &times; 1350 (4:5)</div>
+      <p>Stretch Armstrong / Rock &amp; Roll Playhouse / Washington Art Assoc. 12&ndash;5pm. Warmer tones. Used in Post 8.</p>
+    </div>
+    <div class="graphic-card">
+      <h4>Full 3-Day Schedule</h4>
+      <div class="format">1080 &times; 1350 (4:5)</div>
+      <p>All three days, times, and acts in one saveable reference card. Story use (Week 4).</p>
+    </div>
+    <div class="graphic-card">
+      <h4>Countdown Graphics</h4>
+      <div class="format">1080 &times; 1920 (9:16)</div>
+      <p>Story-only. Bold countdown numbers with SHAG branding. "3 Days" + "Tomorrow" variants.</p>
+    </div>
+    <div class="graphic-card">
+      <h4>Ticket CTA Slide</h4>
+      <div class="format">1080 &times; 1350 (4:5)</div>
+      <p>"Get Tickets" with QR code, website, and dates. Optional slide 3 for Post 3 + stories.</p>
+    </div>
+    <div class="graphic-card">
+      <h4>Friday Lineup Card (optional)</h4>
+      <div class="format">1080 &times; 1350 (4:5)</div>
+      <p>Pride night branding + House of Yes. Susannah Joffe / Bad Judies / Boyyyish. 5&ndash;10pm. For stories &mdash; Post 4 uses the reel instead.</p>
+    </div>
   </div>
 </div>
 
 
-<!-- ========== CROSS-PROMO ========== -->
+<!-- ============================================================ -->
+<!-- STORY STRATEGY -->
+<!-- ============================================================ -->
+
 <div class="section">
-  <h2>Cross-Promotion Plan</h2>
+  <h2>Story Strategy &mdash; 4 Weeks</h2>
+  <p>Stories run alongside feed posts. Looser, more real-time, more conversational. Target 4&ndash;5 stories per week.</p>
+
+  <h3>Week 1 (May 26&ndash;31)</h3>
   <ul>
-    <li><strong>Collab #1 &mdash; @houseofyes:</strong> Post 4 (HOY animation, May 30). Brooklyn nightlife/queer/arts audience.</li>
-    <li><strong>Collab #2 &mdash; @springhillvineyards:</strong> Post 3 (lineup drop, May 29). 13K local followers.</li>
-    <li><strong>Collab #3 &mdash; @springhillvineyards:</strong> Post 20 ("Tomorrow" reel, June 25). Final push.</li>
+    <li><strong>Mon:</strong> Share Post 1 (recap reel) to stories with "SHAG is back"</li>
+    <li><strong>Tue:</strong> Countdown sticker &mdash; "31 days to SHAG"</li>
+    <li><strong>Wed:</strong> Share Post 2 (property photo) with poll: "Have you been to Spring Hill?"</li>
+    <li><strong>Thu:</strong> Behind-the-scenes or reshare of venue/grounds content</li>
+    <li><strong>Fri:</strong> Share Post 3 (lineup) with poll: "Which day is yours?" (Fri / Sat / Sun)</li>
   </ul>
-  <p>Tag all performing artists in their respective posts: @susannahjoffe @raboripe @thebadjudies @boyyyish @rockandrollplayhouse</p>
+
+  <h3>Week 2 (Jun 2&ndash;7)</h3>
+  <ul>
+    <li><strong>Mon:</strong> Share Post 4 (Friday/Pride reel) + House of Yes mention</li>
+    <li><strong>Tue:</strong> Artist spotlight: reshare a post from Susannah Joffe or RIPE's IG</li>
+    <li><strong>Wed:</strong> Share Post 5 (art carousel) + "Did you know?" property facts</li>
+    <li><strong>Thu:</strong> Artist spotlight: reshare Reggie Watts content</li>
+    <li><strong>Fri:</strong> Share Post 6 (Saturday lineup) + question box: "What are you most excited for?"</li>
+  </ul>
+
+  <h3>Week 3 (Jun 9&ndash;14)</h3>
+  <ul>
+    <li><strong>Mon:</strong> "Two weeks" countdown sticker</li>
+    <li><strong>Tue:</strong> Share Post 7 (atmosphere reel)</li>
+    <li><strong>Wed:</strong> Reshare any tagged UGC or follower mentions</li>
+    <li><strong>Thu:</strong> Share Post 8 (Sunday/Family Day) + "Bringing the kids?" poll</li>
+    <li><strong>Sat:</strong> Share Post 9 (golden hour hero) + "12 days"</li>
+  </ul>
+
+  <h3>Week 4 (Jun 18&ndash;25)</h3>
+  <ul>
+    <li><strong>Wed 18:</strong> Share Post 10 (vendors) + "Shopping list loading"</li>
+    <li><strong>Thu 19:</strong> "One week" countdown. Share the poster again.</li>
+    <li><strong>Fri 20:</strong> Quick story: "Friday night is Pride night. House of Yes is coming to the hills."</li>
+    <li><strong>Sat 21:</strong> "5 days" &mdash; clip from a recap video</li>
+    <li><strong>Mon 23:</strong> Share Post 11 (fire pit / 3 days). Countdown sticker.</li>
+    <li><strong>Tue 24:</strong> "2 days" &mdash; daily schedule story (slide for each day with times + lineup)</li>
+    <li><strong>Wed 25:</strong> Share Post 12 ("Tomorrow" reel). Last ticket push.</li>
+  </ul>
 </div>
 
 
+
+<!-- ============================================================ -->
+<!-- UNUSED VIDEOS — REFERENCE -->
+<!-- ============================================================ -->
+
+<div class="section">
+  <h2>Reserve Videos (Not in Current Plan)</h2>
+  <p>These 3 videos are held back for stories, bonus content, or swaps if you prefer them over the assigned videos above.</p>
+
+  <div class="post-card" style="margin-top:20px;">
+    <div class="post-header">
+      <div class="post-info">
+        <div class="post-date">SHAG Thursday with animation &mdash; 59s</div>
+        <div class="post-concept">Has SHAG logo animation intro. Could swap into any reel slot, or use as a story highlight.</div>
+      </div>
+    </div>
+    <div class="post-images single">
+      <video class="post-video" controls preload="metadata">
+        <source src="media/SHAG-Thursday-animation.mp4" type="video/mp4">
+      </video>
+      <div class="video-label">SHAG Thursday with animation.mp4 &mdash; 59s</div>
+    </div>
+  </div>
+
+  <div class="post-card" style="margin-top:20px;">
+    <div class="post-header">
+      <div class="post-info">
+        <div class="post-date">SHAG Sunday V2 (Polished) &mdash; 60s</div>
+        <div class="post-concept">Could swap into Post 8 (Family Day) or Post 12 (closer) if you prefer the Sunday energy</div>
+      </div>
+    </div>
+    <div class="post-images single">
+      <video class="post-video" controls preload="metadata">
+        <source src="media/SHAG-Sunday-V2.mp4" type="video/mp4">
+      </video>
+      <div class="video-label">SHAG Sunday V2.mp4 &mdash; 60s</div>
+    </div>
+  </div>
+
+  <div class="post-card" style="margin-top:20px;">
+    <div class="post-header">
+      <div class="post-info">
+        <div class="post-date">SHAG Sunday (Original) &mdash; 56s</div>
+        <div class="post-concept">Backup &mdash; original cut of the Sunday recap</div>
+      </div>
+    </div>
+    <div class="post-images single">
+      <video class="post-video" controls preload="metadata">
+        <source src="media/SHAG-Sunday.mp4" type="video/mp4">
+      </video>
+      <div class="video-label">SHAG Sunday.mp4 &mdash; 56s</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- CROSS-PROMO -->
+<!-- ============================================================ -->
+
+<div class="section">
+  <h2>Cross-Promotion Plan</h2>
+  <p>SHAG content lives on <strong>@springhillartsgathering only</strong>. But strategic IG Collab posts extend reach to partner audiences.</p>
+  <ul>
+    <li><strong>Collab #1 &mdash; @houseofyes:</strong> Post 4 (Friday Pride reel, June 2). HOY animation intro + Friday footage. Their Brooklyn nightlife/queer/arts audience is the exact Friday demographic. Highest reach potential of any collab.</li>
+    <li><strong>Collab #2 &mdash; @springhillvineyards:</strong> Post 3 (lineup drop, May 30). Taps SHV's 13K local followers for the full lineup reveal.</li>
+    <li><strong>Collab #3 &mdash; @springhillvineyards:</strong> Post 12 ("Tomorrow" reel, June 25). Final push to the widest local audience.</li>
+  </ul>
+  <p>Use IG's Collab feature so each post appears on both grids simultaneously. Tag all performing artists in relevant posts.</p>
+</div>
+
+
+<!-- FOOTER -->
 <div class="footer">
-  <p>SHAG 2026 Campaign Plan v2 &mdash; Rowe Media Group &mdash; May 27, 2026</p>
-  <p style="margin-top:8px;">20 posts &nbsp;&bull;&nbsp; 5x/week &nbsp;&bull;&nbsp; 8 reels &nbsp;&bull;&nbsp; 8 carousels &nbsp;&bull;&nbsp; 3 single photos &nbsp;&bull;&nbsp; 1 graphic</p>
+  <p>SHAG 2026 Campaign Plan &mdash; Rowe Media Group &mdash; May 26, 2026</p>
+  <p style="margin-top:8px;">Review this preview, then confirm: (1) April photo status, (2) any concept swaps, (3) ready to finalize.</p>
 </div>
 
 </div>
